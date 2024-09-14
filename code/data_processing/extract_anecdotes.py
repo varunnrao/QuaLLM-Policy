@@ -4,7 +4,8 @@ import shutil
 from pathlib import Path
 from multiprocessing import Pool
 from dotenv import load_dotenv
-from typing import Dict, Any, Iterator
+from typing import Dict, Any, List
+from tqdm import tqdm
 
 
 def load_env_variables() -> Dict[str, Any]:
@@ -12,11 +13,12 @@ def load_env_variables() -> Dict[str, Any]:
     return {
         'INPUT_FOLDER': Path(os.getenv('INPUT_FOLDER', '')),
         'OUTPUT_FOLDER': Path(os.getenv('OUTPUT_FOLDER', '')),
-        'NUM_PROCESSES': int(os.getenv('NUM_PROCESSES', '100'))
+        'NUM_PROCESSES': int(os.getenv('NUM_PROCESSES', '4'))
     }
 
 
-def process_file(file_path: Path) -> None:
+def process_file(args: tuple) -> None:
+    file_path, output_folder = args
     try:
         with open(file_path, 'r') as f:
             data = json.load(f)
@@ -28,21 +30,24 @@ def process_file(file_path: Path) -> None:
         output_data = {'anecdotes': anecdotes}
 
         relative_path = file_path.relative_to(config['INPUT_FOLDER'])
-        output_path = config['OUTPUT_FOLDER'] / relative_path
+        output_path = output_folder / relative_path
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(output_path, 'w') as f:
             json.dump(output_data, f, indent=2)
 
-        print(f"Processed: {file_path}")
     except Exception as e:
         print(f"Error processing {file_path}: {str(e)}")
 
 
-def find_json_files(folder: Path) -> Iterator[Path]:
-    for file_path in folder.rglob('*.json'):
-        yield file_path
+def process_folder(folder: Path) -> None:
+    json_files = list(folder.rglob('*.json'))
+
+    with Pool(config['NUM_PROCESSES']) as pool:
+        args = [(file, config['OUTPUT_FOLDER']) for file in json_files]
+        list(tqdm(pool.imap_unordered(process_file, args), total=len(json_files), desc=f"Processing {folder.name}",
+                  leave=False))
 
 
 def main() -> None:
@@ -53,9 +58,10 @@ def main() -> None:
         shutil.rmtree(output_folder)
     output_folder.mkdir(parents=True)
 
-    with Pool(config['NUM_PROCESSES']) as pool:
-        for _ in pool.imap_unordered(process_file, find_json_files(input_folder)):
-            pass
+    main_folders = [f for f in input_folder.iterdir() if f.is_dir()]
+
+    for folder in tqdm(main_folders, desc="Processing main folders"):
+        process_folder(folder)
 
 
 if __name__ == "__main__":
