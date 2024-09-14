@@ -1,0 +1,34 @@
+Analyze the provided list of anecdotes, each containing a "quote" and "summary".
+Categorize each anecdote based on the systemic risks caused by AI that explicitly impact workers.
+
+Key systemic risks and their corresponding category numbers:
+1. Labor market risks
+2. Global AI divide
+3. Market concentration risks and single points of failure
+4. Risks to the environment
+5. Risks to privacy
+6. Copyright infringement
+7. Anecdotes unrelated to the impact of AI on work
+
+Follow these steps precisely:
+
+1. Read each anecdote carefully, considering both the quote and the summary.
+
+2. Determine if the anecdote explicitly discusses AI's impact on work:
+   - If yes, assign the most appropriate category from 1-6.
+   - If no, assign category 7.
+
+3. Format the output as a simple JSON file with the following structure:
+
+{
+  "categories": [1, 7, 1, 7]
+}
+
+4. Ensure that:
+   - Each anecdote is assigned exactly one category number.
+   - Categories 1-6 are used ONLY when AI's impact on work is explicitly discussed.
+   - Category 7 is used for all other cases, when anecdotes are unrelated to the impact of AI on work
+   - The category numbers are listed in the same order as the anecdotes in the input.
+   - The number of category assignments matches the number of input anecdotes.
+
+Produce only the JSON output as described above, without any additional explanations or text.
