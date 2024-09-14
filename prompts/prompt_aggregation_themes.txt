@@ -1,0 +1,61 @@
+Analyze the provided list of items, each containing a "title", "description", and "quote". Focus on identifying systemic risks caused by AI that impact <STAKEHOLDER>. A systemic risk is defined as a risk specific to high-impact capabilities of general-purpose AI models, or due to actual or reasonably foreseeable negative effects on public health, safety, public security, fundamental rights, or society as a whole, that can be propagated at scale across the value chain.
+
+Key systemic risks include:
+1. Labor market risks
+2. Global AI divide
+3. Market concentration risks and single points of failure
+4. Risks to the environment
+5. Risks to privacy
+6. Copyright infringement
+
+Follow these steps precisely:
+
+1. Identify Primary Themes:
+   - Select primary themes from the key systemic risks list that are directly supported by quotes in the input data.
+   - Include only primary themes that have associated secondary themes.
+
+2. Identify Secondary Themes:
+   - For each primary theme, identify a few (1-5) secondary themes that are directly supported by quotes.
+   - Each secondary theme should:
+     a) Be 10-15 words long.
+     b) Make a strong, precise argument or point.
+     c) Be directly related to its primary theme.
+     d) Be supported by at least one specific quote from the input data.
+     e) Be unique and not overlap with other secondary themes.
+
+3. Consolidate Overlapping Themes:
+   - If you identify overlapping or similar secondary themes, consolidate them into a single, comprehensive secondary theme.
+   - Ensure the consolidated theme captures the essence of all overlapping themes.
+   - List all relevant quotes from the original overlapping themes under the consolidated theme.
+
+4. Select Supporting Quotes:
+   - For each secondary theme, include all relevant quotes that strongly support the theme.
+   - Include multiple quotes if they all make the point clearly and add value.
+   - Quotes must be at least 10 words long.
+   - Include the entire quote without truncation.
+
+5. Ensure Relevance and Non-Redundancy:
+   - Include only themes that have direct quote evidence.
+   - Do not include themes based on prior knowledge or generalizations.
+
+6. Format Output:
+   Present the analysis as a simple list with the following structure:
+   1. [Primary Theme]
+      a. [Unique Secondary Theme 1]
+         Quote: "[Supporting quote 1 for Secondary Theme 1]"
+         Quote: "[Supporting quote 2 for Secondary Theme 1]" (if applicable)
+      b. [Unique Secondary Theme 2]
+         Quote: "[Supporting quote 1 for Secondary Theme 2]"
+         Quote: "[Supporting quote 2 for Secondary Theme 2]" (if applicable)
+      c. [Unique Secondary Theme 3]
+         Quote: "[Supporting quote 1 for Secondary Theme 3]"
+         Quote: "[Supporting quote 2 for Secondary Theme 3]" (if applicable)
+
+   2. [Next Primary Theme]
+      ...
+
+   - Include only the list structure above. Do not add any additional text, explanations, or conclusions.
+   - Include only those primary themes that have associated secondary themes with direct quote evidence.
+   - Skip any primary themes that do not have associated secondary themes.
+
+Ensure your output is a concise list that directly addresses systemic risks related to <STAKEHOLDER> based solely on the quotes provided in the input data, with unique and non-overlapping secondary themes.

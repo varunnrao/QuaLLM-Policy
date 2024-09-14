@@ -1,0 +1,9 @@
+data/
+references/
+results/
+**/.env
+**/logs/
+.DS_Store
+._*
+.idea/
+**/*private*

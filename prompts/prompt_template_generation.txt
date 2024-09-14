@@ -1,0 +1,29 @@
+Analyze the Reddit Submission present in a JSON format. 
+It represents a submission from r/<SUBREDDIT>. 
+A description of this subreddit: <COMMUNITY DESCRIPTION>
+
+In the JSON file, you will find the following information
+- title of the Reddit post
+- the main content or message of the post.
+- several comments and replies
+- other metadata which may not be very useful.
+The most useful data is present as the value of the "title" and "body" keys. 
+
+Generate a list of the most frequently occurring and impactful discussion themes related to social media and kids. 
+
+Step 1: Identify mentions in submission bodies, titles, and/or comments about social media and kids, and generate themes.
+
+Step 2: Group similar themes across comments and submissions to ensure a mutually exclusive list of themes and avoid redundancy. For example, related discussions of the topic, posting kids' images on social media, should be grouped under a single theme, but different discussions around the same topic should be present under different themes.
+
+Step 3: From the grouped themes, select the most representative quote for each theme. Ensure the quote clearly illustrates the specific theme.
+
+Step 4: Assess which themes are mentioned most frequently and can have the most significant impacts on stakeholders and experts.
+
+Step 5: Create a list of these themes in a JSON format. The entire output must be in a JSON formatted string that can be easily parsed by a program. No other text. Each entry should include (with these specific field names):
+"title": The title of the theme
+"description": A brief description (10-20 words)
+"quote": The entire comment associated with this description.
+
+Step 6: Ensure the final list is concise, precise, and specifically addresses themes related to social media and kids. Include only those concerns found in the input context without generalizing based on prior or outside knowledge.
+
+Step 7: Group any similar themes to avoid redundancy. 

@@ -1,0 +1,60 @@
+Analyze the Reddit data present in a JSON format.
+In the JSON file, you will find the following information:
+- title of the Reddit post
+- the main content or message of the post (selftext)
+- comments (body)
+- other metadata which may not be very useful
+
+Generate a list of anecdotes, discussions of media reports, opinions, and other relevant content strictly related to the impact of AI on people's work. Only extract complete quotes where it is explicitly clear that the content discusses how AI is affecting or could affect people's work. Prioritize comments about real-life experiences where people's work has been impacted by AI, resulting in risks/harms and/or benefits.
+
+Step 1: Identify relevant mentions in the title, selftext, and body (comments) that explicitly discuss the impact of AI on work.
+
+Step 2: Categorize the identified mentions into four mutually exclusive types:
+a) Anecdotes: Personal experiences or specific accounts of AI's impact on work that actually happened
+b) Media Reports: Discussions or references to media articles about AI's impact on work
+c) Opinions: Subjective views on how AI is or could impact work, based on feelings or beliefs rather than direct experience
+d) Other: Relevant content that doesn't fit neatly into the above categories (e.g., technical explanations, statistical data, etc.) but still explicitly relates to AI's impact on work
+
+Ensure that each quote is categorized into only one of these types. If a quote contains elements of multiple types, categorize it based on its primary focus or the most prominent aspect.
+
+Step 3: For each relevant mention, extract the complete quote that explicitly illustrates the impact of AI on work. If the quote requires context from the broader post to understand its relevance to AI's impact on work, include this context in the summary.
+
+Step 4: Create a list of these mentions in a JSON format. The entire output must be in a JSON formatted string that can be easily parsed by a program. No other text. Each category should be represented as an array that can contain multiple entries or be empty. Each entry should include (with these specific field names):
+"quote": The entire relevant quote from the Reddit data that explicitly discusses AI's impact on work
+"summary": A brief summary of the quote (10-20 words), including any necessary context from the broader post to clarify how it relates to AI's impact on work
+
+Step 5: If there isn't any discussion explicitly related to the impact of AI on work in any category, output an empty array for that category.
+
+The final output should be in this format:
+{
+  "anecdotes": [
+    {
+      "quote": "Full quote of a personal experience explicitly mentioning AI's impact on work",
+      "summary": "Brief summary of the anecdote, with context if needed"
+    }
+  ],
+  "media_reports": [
+    {
+      "quote": "Full quote discussing a media report about AI's impact on work",
+      "summary": "Brief summary of the media report discussion, with context if needed"
+    }
+  ],
+  "opinions": [
+    {
+      "quote": "Full quote expressing an opinion about AI's impact on work",
+      "summary": "Brief summary of the opinion, with context if needed"
+    }
+  ],
+  "other": [
+    {
+      "quote": "Full quote of other relevant content explicitly about AI's impact on work",
+      "summary": "Brief summary of the other content, with context if needed"
+    }
+  ]
+}
+
+Note that each category (anecdotes, media_reports, opinions, other) can have multiple entries or be empty. 
+
+Ensure the JSON format is consistent and easily processable by a Python program. Include only those mentions found in the input context without generalizing based on prior or outside knowledge. Remember to keep the categories mutually exclusive, categorizing each quote based on its primary characteristic.
+
+Important: Only include quotes that explicitly and clearly discuss the impact of AI on people's work. If a quote is ambiguous or requires significant inference to relate it to AI's impact on work, do not include it. The connection to AI's impact on work should be evident within the quote itself or clearly explained in the summary using context from the post.

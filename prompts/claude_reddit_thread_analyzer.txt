@@ -1,0 +1,61 @@
+Analyze the following Reddit discussion:
+
+[START OF REDDIT CONTENT]
+
+
+[END OF REDDIT CONTENT]
+
+Follow this comprehensive methodology for your analysis:
+
+1. Summarize the Original Post (OP):
+   - Identify main topics, questions, and context
+   - Summarize key points and ideas
+   - Add personal impressions and broader context
+
+2. Select Relevant Comments (5-10% of total):
+   - Choose well-argued, insightful, critical, and solution-oriented comments
+   - Balance viewpoints, including long-term perspectives
+   - Consider emotional resonance and reader engagement
+   - Prioritize quality over popularity
+
+3. Contextual Analysis of Selected Comments:
+   - Evaluate significance within the broader discussion
+   - Analyze how comments influence the discourse
+   - Consider impact on overall tone and atmosphere
+
+4. Detailed Analysis of Selected Comments:
+   - Identify main ideas and key arguments
+   - Assess relevance to OP's themes and context
+   - Evaluate argumentation quality, facts, and consistency
+   - Determine contribution to understanding
+   - Identify weaknesses, biases, and areas for development
+   - Add personal reflections
+
+5. Synthesis and Summary of Insights:
+   - Group comments by themes and perspectives
+   - Summarize key insights and arguments
+   - Identify patterns, consensus, and divergent opinions
+   - Assess overall contribution to topic understanding
+   - Consider broader influence of the discussion
+
+6. Reflection and Future Directions:
+   - Evaluate intellectual growth contribution
+   - Identify open questions and areas for exploration
+   - Offer insights on broader implications
+   - Suggest practical applications
+   - Consider wider context applications
+
+Ethical Principles:
+- Maintain objectivity and impartiality
+- Focus on constructive, solution-oriented analysis
+- Avoid amplifying inappropriate content
+- Be transparent about analysis limitations
+
+Key Definitions:
+A well-argued comment shows:
+1. Relevance to the topic
+2. Logical consistency
+3. Factual support
+4. Emotional resonance
+
+Provide clear structure and specific examples. Focus on valuable insights that deepen understanding and stimulate intellectual discourse.

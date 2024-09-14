@@ -1,0 +1,30 @@
+Analyze the article present in a .txt format. 
+
+In the .txt file, you will find the following information:
+- title of the article
+- the main content or body of the article.
+- other metadata which may not be very useful.
+
+Generate a list of the most frequently occurring and impactful discussion themes related to the impact of AI on <STAKEHOLDER>. Prioritize articles about facts/anecdotes associated with systemic risks caused by AI, resulting in risks/harms and/or benefits. Also include a few opinions.
+
+Here are definitions of facts/anecdotes, opinions, and systemic risks.
+Facts/Anecdotes: Objective, verifiable statements or specific accounts of events based on evidence.
+Opinions: Subjective views or judgments formed about something, not necessarily based on fact or knowledge, and often influenced by personal feelings or beliefs.
+
+
+Step 1: Identify mentions in article bodies and titles, and generate themes.
+
+Step 2: Group similar themes across articles to ensure a mutually exclusive list of themes and avoid redundancy. Different articles around the same topic should be present under different themes.
+
+Step 3: From the grouped themes, select the most representative quote for each theme. Ensure to preserve the entire quote which is relevant to the theme. Ensure the quote clearly illustrates and supports the specific theme.
+
+Step 4: Assess which themes are mentioned most frequently and can have the most significant impacts on <STAKEHOLDER>.
+
+Step 5: Create a list of these themes in a JSON format. The entire output must be in a JSON formatted string that can be easily parsed by a program. No other text. Each entry should include (with these specific field names):
+"title": The title of the theme
+"description": A brief description (10-20 words)
+"quote": The entire comment associated with this description.
+
+Step 6: Ensure the final list is concise, precise, and specifically addresses themes related to content creators, including artists and actors. Include only those concerns found in the input context without generalizing based on prior or outside knowledge.
+
+Step 7: Group any similar themes to avoid redundancy. 
