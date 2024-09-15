@@ -61,7 +61,7 @@ Statistics:
 | Subreddit            | Cat 1 | Cat 2 | Cat 3 | Cat 4 | Cat 5 | Cat 6 | Cat 7 | Total |
 |----------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | ArtistLounge         |   500 |     2 |     1 |     0 |     1 |   104 |   686 |  1294 |
-| Ask_Lawyers                  |    25 |     0 |     0 |     0 |     1 |     2 |    32 |    60 |
+| Ask_Lawyers          |    25 |     0 |     0 |     0 |     1 |     2 |    32 |    60 |
 | creativewriting      |     1 |     0 |     0 |     0 |     0 |     0 |     0 |     1 |
 | developersIndia      |  2272 |    15 |    16 |     0 |    15 |     4 |  3918 |  6240 |
 | education            |    45 |     1 |     0 |     0 |     1 |     0 |   171 |   218 |
