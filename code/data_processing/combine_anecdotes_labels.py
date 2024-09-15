@@ -7,10 +7,12 @@ from collections import defaultdict
 from dotenv import load_dotenv
 from logging.handlers import RotatingFileHandler
 from tqdm import tqdm
+from tabulate import tabulate
 
 
 def setup_logging():
-    log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'logs')
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    log_dir = os.path.join(script_dir, 'logs')
     os.makedirs(log_dir, exist_ok=True)
     log_file = os.path.join(log_dir, f'processing_{time.strftime("%Y%m%d-%H%M%S")}.log')
 
@@ -79,25 +81,21 @@ def process_subreddit_data(anecdotes_folder, labels_folder, output_folder):
     return log_data
 
 
-def write_log_file(log_data, log_folder):
-    os.makedirs(log_folder, exist_ok=True)
-    log_file_path = os.path.join(log_folder, 'processing_summary.txt')
+def display_statistics(log_data):
+    logging.info("Subreddit Data Processing Summary")
+    logging.info("=================================")
 
-    with open(log_file_path, 'w') as log_file:
-        log_file.write("Subreddit Data Processing Summary\n")
-        log_file.write("=================================\n\n")
+    for subreddit, categories in log_data.items():
+        table_data = [["Category", "Count"]]
+        total_anecdotes = sum(categories.values())
+        for category, count in categories.items():
+            table_data.append([f"Category {category}", count])
+        table_data.append(["Total", total_anecdotes])
 
-        for subreddit, categories in log_data.items():
-            log_file.write(f"Subreddit: {subreddit}\n")
-            log_file.write("-----------------\n")
-            total_anecdotes = sum(categories.values())
-            log_file.write(f"Total anecdotes: {total_anecdotes}\n")
-            log_file.write("Anecdotes per category:\n")
-            for category, count in categories.items():
-                log_file.write(f"  Category {category}: {count}\n")
-            log_file.write("\n")
+        table = tabulate(table_data, headers="firstrow", tablefmt="grid")
 
-    logging.info(f"Summary log file written to: {log_file_path}")
+        logging.info(f"\nSubreddit: {subreddit}")
+        logging.info(f"\n{table}")
 
 
 def main():
@@ -114,7 +112,7 @@ def main():
 
     logging.info("Starting subreddit data processing")
     log_data = process_subreddit_data(input_anecdotes_path, input_labels_path, output_folder)
-    write_log_file(log_data, os.path.join(output_folder, 'logs'))
+    display_statistics(log_data)
 
     logging.info("Processing complete. Check the output folder for CSV files and the logs folder for the summary.")
 
