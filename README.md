@@ -83,6 +83,29 @@ Statistics:
 |----------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Total                |  6647 |    31 |    34 |     0 |    52 |   224 | 13696 | 20684 |
 ```
+9. `classification_labor_csv.py` and `prompt_classification_AI_work_labor.txt` to generate labels for each of the labor anecdotes. The labels are:
+   - Job Displacement: Anecdotes discussing people losing work or being laid off due to AI tools. (1)
+   - Career Transitions: Anecdotes about people adapting their careers in response to AI, including reskilling or changing roles. (2)
+   - AI-enhanced Work: Anecdotes where people are adopting AI tools to enhance productivity and streamline their workflows.(3)
+   - Other: Not an anecdote, doesn't explicitly concern the impact of AI on work, or is speculation. (4)
+
+10. `combine_labor_anecdotes_labels.py` to combine labor anecdotes and their respective labels in a CSV
+11. `combine_profession_anecdotes.py` to group anecdotes into 3 professions.  The professions and their subreddit mapping is below, along with the number of anecdotes in each category.
+
+| Industry | Stakeholders | Subreddits |
+|----------|--------------|------------|
+| Creatives | Writers (freelancers, screenwriting, creative writers, poets, journalists), Musicians, Artists, Actors | r/freelanceWriters/, r/screenwriting, r/creativewriting, r/Poetry, r/Writers, r/Writing, r/Journalism, r/Music, r/Musicians, r/ArtistLounge, r/VoiceActing |
+| Professionals | Lawyers, Doctors, Nurses, Software Engineers | r/Ask_Lawyers, r/Paralegal, r/Nursing, r/Medicine, r/SoftwareEngineering, r/SoftwareDevelopment, r/DevelopersIndia |
+| Educators | Teachers | r/Teachers/, r/Education |
+
+
+| Industry     | Job Displacement (1) | Career Transitions (2) | AI-enhanced Work (3) | Total |
+|--------------|----------------------|------------------------|------------------------|-------|
+| Creatives    | 773                  | 119                    | 330                    | 1222  |
+| Professionals| 589                  | 389                    | 482                    | 1460  |
+| Educators    | 63                   | 60                     | 332                    | 455   |
+| **Overall**  | **1425**             | **568**                | **1144**               | **3137** |
+
 ## Relevant Threads and Links
 
 - Top 40k subreddits: 2005 to 12-2023
