@@ -18,7 +18,7 @@ INDUSTRY_CATEGORIES = {
         'Writing', 'Journalism', 'Music', 'Musicians', 'ArtistLounge', 'VoiceActing'
     ],
     'Professionals': [
-        'AskLawyers', 'Paralegal', 'Nursing', 'Medicine', 'SoftwareEngineering',
+        'AskLawyer', 'Paralegal', 'Nursing', 'Medicine', 'SoftwareEngineering',
         'SoftwareDevelopment', 'DevelopersIndia'
     ],
     'Educators': ['Teachers', 'Education']
@@ -54,21 +54,30 @@ def combine_csv_files():
     industry_data = defaultdict(list)
     total_counts = defaultdict(int)
 
-    # Process each CSV file in the input folder
-    for filename in os.listdir(INPUT_FOLDER):
-        if filename.endswith('.csv'):
-            file_path = os.path.join(INPUT_FOLDER, filename)
-            subreddit_name = os.path.splitext(filename)[0]
-
+    # Process each subdirectory in the input folder
+    for subreddit in os.listdir(INPUT_FOLDER):
+        subreddit_path = os.path.join(INPUT_FOLDER, subreddit)
+        if os.path.isdir(subreddit_path):
             # Determine which industry this subreddit belongs to
-            industry = next((ind for ind, subs in INDUSTRY_CATEGORIES.items() if subreddit_name in subs), None)
+            industry = next((ind for ind, subs in INDUSTRY_CATEGORIES.items() if subreddit in subs), None)
 
             if industry:
-                print(f"Processing {filename} for {industry}")
-                data = read_csv_file(file_path)
-                industry_data[industry].extend(data)
+                print(f"Processing {subreddit} for {industry}")
+                csv_files = [f for f in os.listdir(subreddit_path) if f.endswith('.csv')]
+                if csv_files:
+                    file_path = os.path.join(subreddit_path, csv_files[0])  # Assume one CSV per subreddit
+                    data = read_csv_file(file_path)
+
+                    # Correct the subreddit name for AskLawyer
+                    if subreddit == 'AskLawyers':
+                        for row in data:
+                            row['subreddit_name'] = 'Ask_Lawyers'
+
+                    industry_data[industry].extend(data)
+                else:
+                    print(f"No CSV file found in {subreddit_path}")
             else:
-                print(f"Skipping {filename} - not in any defined industry")
+                print(f"Skipping {subreddit} - not in any defined industry")
 
     # Sort and write the combined data for each industry
     for industry, data in industry_data.items():
