@@ -18,11 +18,16 @@ INDUSTRY_CATEGORIES = {
         'Writing', 'Journalism', 'Music', 'Musicians', 'ArtistLounge', 'VoiceActing'
     ],
     'Professionals': [
-        'AskLawyer', 'Paralegal', 'Nursing', 'Medicine', 'SoftwareEngineering',
+        'AskLawyers', 'Paralegal', 'Nursing', 'Medicine', 'SoftwareEngineering',
         'SoftwareDevelopment', 'DevelopersIndia'
     ],
     'Educators': ['Teachers', 'Education']
 }
+
+# Create a case-insensitive mapping for subreddits to industries
+SUBREDDIT_TO_INDUSTRY = {subreddit.lower(): industry
+                         for industry, subreddits in INDUSTRY_CATEGORIES.items()
+                         for subreddit in subreddits}
 
 
 def read_csv_file(file_path):
@@ -58,8 +63,8 @@ def combine_csv_files():
     for subreddit in os.listdir(INPUT_FOLDER):
         subreddit_path = os.path.join(INPUT_FOLDER, subreddit)
         if os.path.isdir(subreddit_path):
-            # Determine which industry this subreddit belongs to
-            industry = next((ind for ind, subs in INDUSTRY_CATEGORIES.items() if subreddit in subs), None)
+            # Determine which industry this subreddit belongs to (case-insensitive)
+            industry = SUBREDDIT_TO_INDUSTRY.get(subreddit.lower())
 
             if industry:
                 print(f"Processing {subreddit} for {industry}")
@@ -69,9 +74,13 @@ def combine_csv_files():
                     data = read_csv_file(file_path)
 
                     # Correct the subreddit name for AskLawyer
-                    if subreddit == 'AskLawyers':
+                    if subreddit.lower() == 'asklawyers':
                         for row in data:
                             row['subreddit_name'] = 'Ask_Lawyers'
+                    else:
+                        # Ensure the subreddit_name in the data matches the directory name
+                        for row in data:
+                            row['subreddit_name'] = subreddit
 
                     industry_data[industry].extend(data)
                 else:
