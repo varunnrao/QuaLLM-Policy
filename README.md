@@ -89,6 +89,13 @@ Statistics:
    - AI-enhanced Work: Anecdotes where people are adopting AI tools to enhance productivity and streamline their workflows.(3)
    - Other: Not an anecdote, doesn't explicitly concern the impact of AI on work, or is speculation. (4)
 
+    The LLM output is structured as follows:
+    ```
+    {
+         "category": 1
+    }
+    ```
+
 10. `combine_labor_anecdotes_labels.py` to combine labor anecdotes and their respective labels in a CSV
 11. `combine_profession_anecdotes.py` to group anecdotes into 3 professions.  The professions and their subreddit mapping is below, along with the number of anecdotes in each category.
 
