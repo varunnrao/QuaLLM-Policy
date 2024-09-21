@@ -18,7 +18,7 @@ INDUSTRY_CATEGORIES = {
         'Writing', 'Journalism', 'Music', 'Musicians', 'ArtistLounge', 'VoiceActing'
     ],
     'Professionals': [
-        'AskLawyers', 'Paralegal', 'Nursing', 'Medicine', 'SoftwareEngineering',
+        'AskLawyer', 'Paralegal', 'Nursing', 'Medicine', 'SoftwareEngineering',
         'SoftwareDevelopment', 'DevelopersIndia'
     ],
     'Educators': ['Teachers', 'Education']
